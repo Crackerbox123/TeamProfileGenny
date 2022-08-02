@@ -1,0 +1,25 @@
+{
+  "name": "teamprofilegenny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crackerbox123/TeamProfileGenny.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crackerbox123/TeamProfileGenny/issues"
+  },
+  "homepage": "https://github.com/Crackerbox123/TeamProfileGenny#readme",
+  "dependencies": {
+    "inquirer": "^9.0.2"
+  }
+}
