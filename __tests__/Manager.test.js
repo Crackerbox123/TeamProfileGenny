@@ -21,7 +21,7 @@ test('test email from getEmail', () => {
 });
 
 test('test extension # from xxxxxxxx', () => {
-    expect(manager.getOfficeNumber()).toBE('123');
+    expect(manager.getOfficeNumber()).toBe('123');
 });
 
 test('test role from getRole()', () => {
