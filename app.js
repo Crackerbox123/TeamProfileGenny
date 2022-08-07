@@ -34,9 +34,52 @@ const promptManager = () => {
                     return false;
                 }
             }
-        }
-    ]
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter email',
+            validate: getEmail => {
+                if (email) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+    ]).then(answer => {
+        console.log(answers);
+        const manager = new Manager(answers.name, answers.employeeId. answers.email. answers.officeNumber);
+        teamMembers.push(manager);
+    })
+};
+
+const promptMenu = () => {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'menu',
+            message: 'Select option to add:', 
+            choice: ['add an engineer', 'add an intern', 'finish building my team']
+
+        } ])
+        .then(userChoice => {
+            switch (userChoice.menu) {
+                case "add an engineer":
+                    promptEngineer();
+                    break;
+                case "add intern":
+                    promptIntern();
+                    break;
+                default:
+                    buildTeam();                    
+            }
+        });
+};
+
+const promptEngineer = () => {
+    console.log('
+    ==============
+    Add engineer 
+    ==============')
 }
-
-
-
