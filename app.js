@@ -3,101 +3,170 @@ const Manager = require("./lib/Manager");
 const Employee = require('./lib/Employee');
 const Intern = require('./lib/Employee');
 const Engineer = require('./lib/Employee');
-const generateSite = require('./src/generate-site.js');
+const generateSite = require('./src/page-template.js');
 const fs = require('fs');
-const path = require('path');
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
-const teamMembers = [];
 
-const promptManager = () => {
-    return inquirer.prompt([
-        {
-            type: 'input',
+const employees = [];
+
+
+
+const questions = 
+        [{
+            type: 'input', 
             name: 'name',
-            message: 'What is your name?',
-            validate: nameInpute => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your name');
-                    return false;
-                }
-            }
+            message: 'Team Managers Name?'
         },
         {
-            type: 'input',
-            name: 'employeeId',
-            message: 'Enter employee ID',
-            validate: employeeId => {
-                if (employeeId) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            type: 'input', 
+            name: 'id',
+            message: 'What is your ID number?'
         },
         {
-            type: 'input',
+            type: 'input', 
             name: 'email',
-            message: 'Enter email',
-            validate: getEmail => {
-                if (email) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            message: 'What is your email address?'
         },
-    ]).then(answer => {
-        console.log(answers);
-        const manager = new Manager(answers.name, answers.employeeId. answers.email. answers.officeNumber);
-        teamMembers.push(manager);
-    })
-};
-
-const promptMenu = () => {
-    return inquirer.prompt([
+        {
+            type: 'input', 
+            name: 'number',
+            message: 'What is your Office Number?'
+        },
         {
             type: 'list',
-            name: 'menu',
-            message: 'Select option to add:', 
-            choice: ['add an engineer', 'add an intern', 'finish building my team']
+            choices: ["Engineer", "Intern", "Done."], 
+            name: 'addmember',
+            message: 'Do you want to add a member?'
+        }];
 
-        } ])
-        .then(userChoice => {
-            switch (userChoice.menu) {
-                case "add an engineer":
-                    promptEngineer();
-                    break;
-                case "add intern":
-                    promptIntern();
-                    break;
-                default:
-                    buildTeam();                    
-            }
-        });
+
+
+function engineerQuestions() {
+    inquirer.prompt([
+        {
+            type: 'input', 
+            name: 'engName',
+            message: `Please type in Engineer's name`
+        },
+        {
+            type: 'input', 
+            name: 'engId',
+            message: `What is Engineer's ID?`
+        },
+        {
+            type: 'input', 
+            name: 'engEmail',
+            message: `What is Engineer's email?`
+        },
+        {
+            type: 'input', 
+            name: 'gitHub',
+            message: `What is Engineer's Git-Hub ID?`
+        },
+        {
+            type: 'list',
+            choices: ["Engineer", "Intern", "Done."], 
+            name: 'addmembers1',
+            message: 'Do you want to add another member?'
+        },
+    ]).then((answer) => {
+
+        const engineer = new Engineer(answer.engName, answer.engId, answer.engEmail, answer.gitHub);
+        employees.push(engineer)//push it to array employees
+
+        if(answer.addmembers1 === 'Engineer') {
+            engineerQuestions()
+        } else if(answer.addmembers1 === 'Intern') {
+            internQuestions()
+        } else {
+            writeToFile("index.html", generateHTML(employees) )
+        }
+
+    });
 };
 
-const promptEngineer = () => {
-    console.log(`
-    ==============
-    Add engineer 
-    ==============`);
 
-    return inquirer.prompt([
+
+function internQuestions() {
+    inquirer.prompt([
         {
-            type: 'input',
-            name: 'name',
-            message: 'Engineer name',
-            validate: engineerName => {
-                if(engineerName) {
-                    return true;
-                } else {
-                    console.log('enter name');
-                    return false;
-                }
-            }
+            type: 'input', 
+            name: 'inName',
+            message: 'Please type in your name'
         },
-    ])
+        {
+            type: 'input', 
+            name: 'inId',
+            message: 'What is your ID?'
+        },
+        {
+            type: 'input', 
+            name: 'inEmail',
+            message: 'What is your email?'
+        },
+        {
+            type: 'input', 
+            name: 'school',
+            message: 'Where did you go to school?'
+        },
+        {
+            type: 'list',
+            choices: ["Engineer", "Intern", "Done."], 
+            name: 'addmembers2',
+            message: 'Do you want to add another member?'
+        }, //answers below is taken from all the questions answered above and storing it in the 
+        //answers arguement. And then it's passed to variable intern for creating a new intern card.
+    ]).then((answer) => {
+        //creating a new intern card from array of objects(questions) from intern.
+        //self note: must be in same order as listed in /lib/intern/.js or will throw off node. 
+        const intern = new Intern(answer.inName, answer.inId, answer.inEmail, answer.school);
+        employees.push(intern)//push it to array employees
+
+        if(answer.addmembers2 === 'Engineer') {
+            engineerQuestions()
+        } else if(answer.addmembers2 === 'Intern') {
+            internQuestions()
+        } else {
+            writeToFile("index.html", generateHTML(employees) )
+        }
+    });
 }
+
+
+function writeToFile(fileName, data) {
+    fs.writeFile('./' + fileName, data, err => {
+        if(err) {
+            return console.error(err) 
+        } else {
+            console.log("Successful writing to " + fileName);
+        }
+    })    
+}
+
+
+
+function init() {
+    inquirer.prompt(questions).then((answers) => {
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.number)
+        employees.push(manager); //push it to array employees
+       
+        switch(answers.addmember) {
+
+            case "Engineer":
+                engineerQuestions();
+            break;
+
+            case "Intern":             
+                internQuestions()     
+            break;
+
+            default:
+                writeToFile("index.html", generateHTML(employees) )
+
+        }
+
+    })
+    };
+
+
+
+init();

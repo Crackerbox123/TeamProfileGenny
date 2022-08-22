@@ -16,7 +16,7 @@ test("set name ", () => {
 test("set id", () => {
     const testValue = 1;
     const e = new Intern("Foo", testValue, "test@test.com", "school");
-    expect(e.getId()).toBe(testValue);
+    expect(e.getID()).toBe(testValue);
 })
 
 test("set email", () => {

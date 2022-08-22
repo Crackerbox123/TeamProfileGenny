@@ -16,5 +16,5 @@ test("Set engineer role", () => {
 test("set Engineer ID", () => {
     const testValue = 100;
     const e = new Engineer("bob", testValue, "test@test.com", "Engineer")
-    expect(e.getId()).toBe(testValue);
+    expect(e.getID()).toBe(testValue);
 })

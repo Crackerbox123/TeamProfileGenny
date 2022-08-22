@@ -16,7 +16,7 @@ test("test setting name", () => {
 test("test setting id", () => {
     const testValue = 100;
     const e = new Employee("Foo", testValue, "test@test.com", "Employee");
-    expect(e.getId()).toBe(testValue);
+    expect(e.getID()).toBe(testValue);
 })
 
 test("test setting Email", () => {

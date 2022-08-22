@@ -10,7 +10,7 @@ test("Set office number", () => {
 test("set id", () => {
     const testValue = 100;
     const e = new Manager("Sanji", testValue, "test@test.com", 1);
-    expect(e.getId()).toBe(testValue);
+    expect(e.getID()).toBe(testValue);
 })
 
 test("set email", () => {
