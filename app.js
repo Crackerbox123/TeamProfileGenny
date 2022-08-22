@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Employee = require('./lib/Employee');
+const Intern = require('./lib/Employee');
+const Engineer = require('./lib/Employee');
 const generateSite = require('./src/generate-site.js');
 const fs = require('fs');
 const path = require('path');
@@ -78,8 +80,24 @@ const promptMenu = () => {
 };
 
 const promptEngineer = () => {
-    console.log('
+    console.log(`
     ==============
     Add engineer 
-    ==============')
+    ==============`);
+
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Engineer name',
+            validate: engineerName => {
+                if(engineerName) {
+                    return true;
+                } else {
+                    console.log('enter name');
+                    return false;
+                }
+            }
+        },
+    ])
 }
