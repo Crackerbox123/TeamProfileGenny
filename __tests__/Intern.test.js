@@ -1,29 +1,26 @@
-const Intern = require('../lib/Intern');
-const intern = new Intern('test', '12345', 'testmail', 'appleton')
+const Employee = require("../lib/employee");
+const Intern = require("../lib/intern");
 
-test('test constructor values', () => {
-   expect(intern.name).toBe('test');
-   expect(intern.id).toBe('12345');
-   expect(intern.email).toBe('testmail');
-   expect(intern.extension).toBe('123');
-});
+test("Set school", () => {
+    const testValue = String;
+    const e = new Intern("Foo", 1, "test@test.com", testValue);
+    expect(e.getSchool()).toBe(testValue);
+})
 
-test('test name from getName', () => {
-    expect(intern.getName()).toBe('test');
-});
+test("set name ", () => {
+    const testValue = String;
+    const e = new Intern(testValue, 1, "test@test.com", "school");
+    expect(e.getName()).toBe(testValue);
+})
 
-test('test id from getID()', () => {
-    expect(intern.getID()).toBE('12345');
-});
+test("set id", () => {
+    const testValue = 1;
+    const e = new Intern("Foo", testValue, "test@test.com", "school");
+    expect(e.getId()).toBe(testValue);
+})
 
-test('test email from getEmail', () => {
-    expect(intern.getEmail()).toBe('testmail');
-});
-
-test('test school', () => {
-    expect(intern.getSchool()).toBe('appleton');
-});
-
-test('test role from getRole()', () => {
-    expect(intern.getRole()).toBe('Intern');
-});
+test("set email", () => {
+    const testValue = "test@test.com";
+    const e = new Intern("Foo", 1, testValue, "school");
+    expect(e.getEmail()).toBe(testValue);
+})

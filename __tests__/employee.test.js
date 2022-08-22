@@ -1,20 +1,32 @@
-const Employee = require('./lib/Employee');
-const employee = new Employee('Kalin', '12345', 'koestreicher4@gmail.com');
+//const { describe } = require('yargs');
+const Employee = require('../lib/employee')
 
-test('test values from employee() constructor', () => {
-    expect(employee.name).toBe('Kalin');
-    expect(employee.id).toBe('12345');
-    expect(employee.email.toBe('koestreicher4@gmail.com'))
+
+test("employee contructor instantiated", () => {
+    const e = new Employee();
+    expect(typeof(e)).toBe("object");
 });
 
-test('test getName() method', () => {
-    expect(employee.getName()).toBe('Kalin');
-});
+test("test setting name", () => {
+    const testValue = String;
+    const e = new Employee(testValue , 1, "test@test.com", "Employee");
+    expect(e.getName()).toBe(testValue);
+})
 
-test('test getID() method', () => {
-    expect(employee.id).toBe('12345')
-});
+test("test setting id", () => {
+    const testValue = 100;
+    const e = new Employee("Foo", testValue, "test@test.com", "Employee");
+    expect(e.getId()).toBe(testValue);
+})
 
-test('test getRole method', () => {
-    expect(employee.getRole()).toBe('Employee');
-});
+test("test setting Email", () => {
+    const testValue = "test@test.com";
+    const e = new Employee("Foo", 1, testValue, "Employee");
+    expect(e.getEmail()).toBe(testValue);
+})
+
+test("test settting role", () => {
+    const testValue = "Employee";
+    const e = new Employee("Foo", 1, "test@test.com", testValue);
+    expect(e.getRole()).toBe(testValue);
+})

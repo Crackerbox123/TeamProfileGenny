@@ -1,29 +1,26 @@
-const Manager = require('../lib/Manager');
-const manager = new Manager('test', '12345', 'testmail', '123')
+const Manager = require("../lib/manager");
+const Employee = require("../lib/employee");
 
-test('test constructor values', () => {
-   expect(manager.name).toBe('test');
-   expect(manager.id).toBe('12345');
-   expect(manager.email).toBe('testmail');
-   expect(manager.extension).toBe('123');
-});
+test("Set office number", () => {
+    const testValue = 100;
+    const e = new Manager("Luffy", 1, "test@test.com", testValue);
+    expect(e.getOfficeNumber()).toBe(testValue);
+})
 
-test('test name from getName', () => {
-    expect(manager.getName()).toBe('test');
-});
+test("set id", () => {
+    const testValue = 100;
+    const e = new Manager("Sanji", testValue, "test@test.com", 1);
+    expect(e.getId()).toBe(testValue);
+})
 
-test('test id from getID()', () => {
-    expect(manager.getID()).toBE('12345');
-});
+test("set email", () => {
+    const testValue = "test@test.com";
+    const e = new Manager("Sanji", 1, testValue, 1);
+    expect(e.getEmail()).toBe(testValue);
+})
 
-test('test email from getEmail', () => {
-    expect(manager.getEmail()).toBe('testmail');
-});
-
-test('test extension # from xxxxxxxx', () => {
-    expect(manager.getOfficeNumber()).toBe('123');
-});
-
-test('test role from getRole()', () => {
-    expect(manager.getRole()).toBe('Manager');
-});
+test("set name", () => {
+    const testValue = String;
+    const e = new Manager(testValue, 1, "test@test.com", 1);
+    expect(e.getName()).toBe(testValue);
+})
