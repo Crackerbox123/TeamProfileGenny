@@ -3,7 +3,7 @@ const Manager = require("./lib/Manager");
 const Employee = require('./lib/Employee');
 const Intern = require('./lib/Employee');
 const Engineer = require('./lib/Employee');
-const generateSite = require('./src/page-template.js');
+const generateHTML = require('./src/page-template.js');
 const fs = require('fs');
 
 const employees = [];
@@ -113,11 +113,9 @@ function internQuestions() {
             choices: ["Engineer", "Intern", "Done."], 
             name: 'addmembers2',
             message: 'Do you want to add another member?'
-        }, //answers below is taken from all the questions answered above and storing it in the 
-        //answers arguement. And then it's passed to variable intern for creating a new intern card.
+        },
+       
     ]).then((answer) => {
-        //creating a new intern card from array of objects(questions) from intern.
-        //self note: must be in same order as listed in /lib/intern/.js or will throw off node. 
         const intern = new Intern(answer.inName, answer.inId, answer.inEmail, answer.school);
         employees.push(intern)//push it to array employees
 
@@ -137,7 +135,7 @@ function writeToFile(fileName, data) {
         if(err) {
             return console.error(err) 
         } else {
-            console.log("Successful writing to " + fileName);
+            console.log("Successfully wrote to: " + fileName);
         }
     })    
 }
