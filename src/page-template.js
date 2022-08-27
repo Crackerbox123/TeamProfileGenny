@@ -14,7 +14,7 @@ const generateManager = function manager(manager) {
                     <div class="collapsible-header"><i class="material-icons"></i>ID:&nbsp; <span class="id">${manager.getID()}</span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>E-Mail:&nbsp; <span class="Email">${manager.getEmail()}</span></div>
+                    <div class="collapsible-header"><i class="material-icons"></i>E-Mail:&nbsp; <span class="Email"><a href = "mailto:${manager.getEmail()}">${manager.getEmail()}</a></span></div>
                     </li>
                     <li>
                     <div class="collapsible-header"><i class="material-icons"></i>Office Number:&nbsp; <span class="office-number">${manager.getOfficeNumber()}</span></div>
@@ -37,13 +37,13 @@ const generateEngineer = function engineer(engineer) {
             <div class="card-content">
                 <ul class="collapsible">
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>ID:&nbsp; <span class="id">${engineer.getID()}</span></div>
+                    <div class="collapsible-header">:&nbsp; <span class="id">${engineer.getID()}</span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>E-Mail:&nbsp; <span class="email">${engineer.getEmail()}</span></div>
+                    <div class="collapsible-header">E-Mail:&nbsp; <span class="email"><a href = "mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>Office Number:&nbsp; <span class="github"><a href = "https:
+                    <div class="collapsible-header">Office Number:&nbsp; <span class="github"><a href = "https:
                     //github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></span></div>
                     </li>
                 </ul>
@@ -67,10 +67,10 @@ const generateIntern = function intern(intern) {
                     <div class="collapsible-header"><i class="material-icons"></i>ID:&nbsp; <span class="id">${intern.getID()}</span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>E-Mail:&nbsp; <span class="Email">${intern.getEmail()}</span></div>
+                    <div class="collapsible-header"><i class="material-icons"></i>E-Mail:&nbsp; <span class="Email"><a href = "mailto:${intern.getEmail()}">${intern.getEmail()}</a></span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>Office Number:&nbsp; <span class="school">${intern.getSchool()}</span></div>
+                    <div class="collapsible-header"><i class="material-icons"></i>School:&nbsp; <span class="school">${intern.getSchool()}</span></div>
                     </li>
                 </ul>
             </div>
