@@ -43,7 +43,12 @@ const generateEngineer = function engineer(engineer) {
                     <div class="collapsible-header">E-Mail:&nbsp; <span class="email"><a href = "mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header">Office Number:&nbsp; <span class="github"><a href = "https:
+                    <div class="collapsible-header"><i 
+                    class="material-icons"></i>ID:&nbsp; <span 
+                    class="id">${engineer.getID()}</span></div>
+                    </li>
+                    <li>
+                    <div class="collapsible-header">Github:&nbsp; <span class="github"><a href = "https:
                     //github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></span></div>
                     </li>
                 </ul>
