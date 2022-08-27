@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Employee = require('./lib/Employee');
-const Intern = require('./lib/Employee');
-const Engineer = require('./lib/Employee');
+const Intern = require('./lib/Intern');
+const Engineer = require('./lib/Engineer');
 const generateHTML = require('./src/page-template.js');
 const fs = require('fs');
 

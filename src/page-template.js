@@ -1,4 +1,4 @@
-const MemberInfo = require("../app");
+
 const generateManager = function manager(manager) {
   return `
         
@@ -43,7 +43,8 @@ const generateEngineer = function engineer(engineer) {
                     <div class="collapsible-header"><i class="material-icons"></i>E-Mail:&nbsp; <span class="email">${engineer.getEmail()}</span></div>
                     </li>
                     <li>
-                    <div class="collapsible-header"><i class="material-icons"></i>Office Number:&nbsp; <span class="github">${engineer.getGitHub()}</span></div>
+                    <div class="collapsible-header"><i class="material-icons"></i>Office Number:&nbsp; <span class="github"><a href = "https:
+                    //github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></span></div>
                     </li>
                 </ul>
             </div>
@@ -93,6 +94,7 @@ const generateTeam = (employees) => {
         break;
     }
   }
+  console.log(employees);
   return cards;   
  
 };
