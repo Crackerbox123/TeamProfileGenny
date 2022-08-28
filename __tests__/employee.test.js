@@ -1,11 +1,10 @@
-//const { describe } = require('yargs');
 const Employee = require('../lib/employee')
 
 
-test("employee contructor instantiated", () => {
-    const e = new Employee();
-    expect(typeof(e)).toBe("object");
-});
+// test("employee contructor instantiated", () => {
+//     const e = new Employee();
+//     expect(typeof(e)).toBe("object");
+// });
 
 test("test setting name", () => {
     const testValue = String;

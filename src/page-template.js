@@ -93,7 +93,6 @@ const generateTeam = (employees) => {
         break;
     }
   }
-  console.log(employees);
   return cards;   
  
 };
